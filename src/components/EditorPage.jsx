@@ -89,7 +89,7 @@ const EditorPage = ({ app, onBack }) => {
             <Download size={22} /> Download Typeface Editor ZIP ({app?.file || 'ZIP'})
           </a>
           <span style={{ color: 'var(--muted-text)', fontSize: '0.9rem' }}>
-            📦 31.9 MB • Standalone with packages included
+            📦 24.4 MB • Standalone with packages included
           </span>
         </div>
       </div>
