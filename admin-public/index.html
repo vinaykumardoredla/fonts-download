@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FontDownloader Admin</title>
+    <style>
+        body { font-family: system-ui, -apple-system, sans-serif; margin: 0; padding: 2rem; background: #f4f4f5; color: #18181b; }
+        .container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+        .card { background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1); margin-bottom: 2rem; }
+        h1, h2 { margin-top: 0; border-bottom: 2px solid #f4f4f5; padding-bottom: 0.5rem; }
+        .form-group { margin-bottom: 1rem; }
+        label { display: block; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.875rem; }
+        input[type="text"], select, textarea { width: 100%; padding: 0.5rem; border: 1px solid #e4e4e7; border-radius: 4px; box-sizing: border-box; font-family: inherit; }
+        textarea { resize: vertical; min-height: 80px; }
+        .btn { background: #18181b; color: white; border: none; padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer; font-weight: 600; }
+        .btn:hover { background: #27272a; }
+        .btn-danger { background: #dc2626; }
+        .btn-danger:hover { background: #b91c1c; }
+        .list-item { padding: 1rem; border: 1px solid #e4e4e7; border-radius: 4px; margin-bottom: 1rem; display: flex; justify-content: space-between; align-items: center; }
+        .badge { background: #fef08a; color: #854d0e; padding: 0.25rem 0.5rem; border-radius: 999px; font-size: 0.75rem; font-weight: 600; margin-left: 0.5rem; }
+    </style>
+</head>
+<body>
+    <div style="max-width: 1200px; margin: 0 auto 2rem auto;">
+        <h1>Admin Dashboard</h1>
+    </div>
+    <div class="container">
+        
+        <!-- FONTS SECTION -->
+        <div>
+            <div class="card">
+                <h2 id="fontFormTitle">Add New Font</h2>
+                <form id="fontForm">
+                    <input type="hidden" id="fontId">
+                    <input type="hidden" id="existingFile">
+                    
+                    <div class="form-group"><label>Font Name</label><input type="text" id="fontName" required></div>
+                    <div class="form-group"><label>Author</label><input type="text" id="fontAuthor" required></div>
+                    <div class="form-group"><label>Style</label><input type="text" id="fontStyle" required></div>
+                    <div class="form-group"><label>CSS font-family string</label><input type="text" id="cssString" value="sans-serif"></div>
+                    <div class="form-group"><label><input type="checkbox" id="isFeatured"> Feature this font?</label></div>
+                    <div class="form-group"><label>Custom Preview Text</label><input type="text" id="previewText"></div>
+                    <div class="form-group"><label>Custom Character Map</label><textarea id="characterMap"></textarea></div>
+                    <div class="form-group">
+                        <label>Font File (.ttf, .otf)</label>
+                        <input type="file" id="fontFile" accept=".ttf,.otf">
+                        <small id="currentFileDisplay" style="display: block; margin-top: 0.25rem; color: #71717a;"></small>
+                    </div>
+                    
+                    <button type="submit" class="btn" style="width: 100%">Save Font</button>
+                    <button type="button" id="fontCancelBtn" class="btn" style="width: 100%; margin-top: 0.5rem; background: #e4e4e7; color: black; display: none;">Cancel Edit</button>
+                </form>
+            </div>
+            
+            <h2>Font Database</h2>
+            <div id="fontList">Loading...</div>
+        </div>
+
+        <!-- APPS SECTION -->
+        <div>
+            <div class="card">
+                <h2 id="appFormTitle">Upload Editor App</h2>
+                <form id="appForm">
+                    <input type="hidden" id="appId">
+                    <input type="hidden" id="existingAppFile">
+                    
+                    <div class="form-group"><label>App Name</label><input type="text" id="appName" required></div>
+                    <div class="form-group"><label>Version</label><input type="text" id="appVersion" required></div>
+                    <div class="form-group">
+                        <label>App Archive (.zip)</label>
+                        <input type="file" id="appFile" accept=".zip">
+                        <small id="currentAppFileDisplay" style="display: block; margin-top: 0.25rem; color: #71717a;"></small>
+                    </div>
+                    
+                    <button type="submit" class="btn" style="width: 100%">Save App</button>
+                    <button type="button" id="appCancelBtn" class="btn" style="width: 100%; margin-top: 0.5rem; background: #e4e4e7; color: black; display: none;">Cancel Edit</button>
+                </form>
+            </div>
+
+            <h2>Editor Apps Database</h2>
+            <div id="appList">Loading...</div>
+        </div>
+
+    </div>
+    
+    <script src="admin.js"></script>
+</body>
+</html>
